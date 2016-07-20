@@ -1,9 +1,41 @@
-This script is based on the install script from André Schenkels (https://github.com/aschenkels-ictstudio/openerp-install-scripts)
-but goes a bit further. This script will also give you the ability to define an xmlrpc_port in the .conf file that is generated under /etc/
-This script can be safely used in a multi-odoo code base server because the default Odoo port is changed BEFORE the Odoo is started.
+# odoo_clouder_install
+Automated install scripts for Odoo + Clouder. 
+This scripts just needs to be preconfigured before being launched, no interaction needed. 
 
-<h3>What version to choose?</h3>
-By chosing the version at the top in Github you can choose to use the script according to your need.
-8.0 is specifically build for Odoo V8 installations
-9.0 is specifically build for Odoo V9 installations
-master is specifically build for testing & development
+The script is based on the install script from André Schenkels (https://github.com/aschenkels-ictstudio/openerp-install-scripts) and having some additions from the one of Yenthe (https://github.com/Yenthe666/InstallScript) and Gustavo Valverde (https://github.com/gustavovalverde/odoo-install-scripts). 
+
+It also follows the approach recommended in Odoo's documentation (https://www.odoo.com/documentation/9.0/setup/install.html) using pip instead of apt-get for python dependencies
+
+> It's recommended to install this script with **elevated privileges**, so there's no need to use **sudo** to execute this procedure.
+
+<h3>Installation procedure</h3>
+1.  Download the script
+  ```bash
+  wget https://raw.githubusercontent.com/openexpertiz/InstallScript/master/odoo_clouder_install.sh
+  ```
+
+2.  **THIS IS IMPORTANT!** Modify this variables, otherwise you might get hacked too easily
+  ```bash
+    OE_USER="odoo"
+    OE_SUPERADMIN="admin-oe2017"
+  ```
+
+3.  Modify this variables based on your needs
+  ```bash
+    INSTALL_CLOUDER="True"
+    INSTALL_WKHTMLTOPDF="True"
+    HAVE_PROXY="False" 
+    OE_PORT="8069"
+    OE_VERSION="8.0"
+    IS_ENTERPRISE="False"
+```
+
+4.  Make the script executable
+  ```bash
+  chmod +x odoo_clouder_install.sh
+  ```
+
+5. Execute the script:
+  ```bash
+  . odoo_clouder_install.sh
+  ```
