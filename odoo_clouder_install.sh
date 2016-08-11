@@ -1,7 +1,8 @@
 #!/bin/bash
 ################################################################################
 # Script for installing Odoo and Clouder on Ubuntu 14.04 and 16.04 (could be used for other version too)
-# Author: Yenthe Van Ginneken
+# /!\ BETA version, do NOT use in production!
+# Authors: Amaury, Insaf, Yenthe Van Ginneken
 #-------------------------------------------------------------------------------
 # This script will install Odoo and Clouder on your Ubuntu server. It can install multiple Odoo instances
 # in one Ubuntu because of the different xmlrpc_ports
