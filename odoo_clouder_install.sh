@@ -72,7 +72,7 @@ sudo apt-get upgrade -y
 # Install PostgreSQL Server
 #--------------------------------------------------
 echo -e "\n---- Install PostgreSQL Server ----"
-sudo apt-get install postgresql -y
+sudo apt-get install postgresql libpq-dev -y
 
 echo -e "\n---- Creating the ODOO PostgreSQL User  ----"
 sudo su - postgres -c "createuser -s $OE_USER" 2> /dev/null || true
@@ -81,22 +81,41 @@ sudo su - postgres -c "createuser -s $OE_USER" 2> /dev/null || true
 # Install Dependencies
 #--------------------------------------------------
 echo -e "\n---- Install tool packages ----"
-sudo apt-get install wget git python-pip gdebi-core -y
+sudo apt-get install wget git python-pip gdebi-core supervisor -y
 	
+echo -e "\n---- Install and Upgrade pip ----"
+sudo pip install --upgrade pip
+
 echo -e "\n---- Install python packages ----"
 sudo apt-get install python-dateutil python-feedparser python-ldap python-libxslt1 python-lxml python-mako python-openid python-psycopg2 python-pybabel python-pychart python-pydot python-pyparsing python-reportlab python-simplejson python-tz python-vatnumber python-vobject python-werkzeug python-xlwt python-yaml python-docutils python-psutil python-mock python-unittest2 python-jinja2 python-pypdf python-decorator python-requests python-passlib python-geoip python-unicodecsv python-serial python-pillow -y
-	
-echo -e "\n---- Install python libraries ----"
+
+echo -e "\n---- Install Odoo python dependencies in requirements.txt ----"
+sudo pip install -r $OE_HOME_EXT/requirements.txt
+
+echo -e "\n---- Install additional python dependencies ----"
 sudo pip install gdata psycogreen
-# This is for compatibility with Ubuntu 16.04. Will work on 14.04 and 16.04
-sudo pip install paramiko erppeek
-# This is required for OCA/Connector and Clouder
+# This is for compatibility with Ubuntu 16.04. Will work on 14.04
 sudo -H pip install suds
 
 echo -e "\n--- Install other required packages"
 sudo apt-get install node-clean-css -y
 sudo apt-get install node-less -y
 sudo apt-get install python-gevent -y
+
+echo "************************************"
+echo "*                                  *"
+echo "*         Clouder Libraries        *"
+echo "*                                  *"
+echo "************************************"
+echo -e "\n---- Install required libraries for Clouder ----"
+sudo pip install simplejson lxml pytz psycopg2 werkzeug pyyaml mako platypus unittest2 reportlab decorator pillow requests 
+sudo pip install jinja2 pyPdf passlib psutil
+sudo apt-get install python-dateutil python-pychart python-decorator python-docutils python-passlib python-openid python-babel
+
+echo -e "\n---- Install and Upgrade paramiko and erppeek ----"
+# This is required for OCA/Connector and Clouder
+sudo pip install --upgrade paramiko
+sudo pip install --upgrade erppeek
 
 #--------------------------------------------------
 # Install Wkhtmltopdf if needed
@@ -218,7 +237,7 @@ cat <<EOF > ~/$OE_CONFIG
 # Default-Start: 2 3 4 5
 # Default-Stop: 0 1 6
 # Short-Description: Enterprise Business Applications
-# Description: ODOO Business Applications
+# Description: Odoo + Clouder
 ### END INIT INFO
 PATH=/bin:/sbin:/usr/bin
 DAEMON=$OE_HOME_EXT/openerp-server
@@ -286,6 +305,7 @@ sudo update-rc.d $OE_CONFIG defaults
 
 echo -e "* Starting Odoo Service"
 sudo su root -c "/etc/init.d/$OE_CONFIG start"
+
 echo "-----------------------------------------------------------"
 echo "Done! The Odoo server is up and running. Specifications:"
 echo "Port: $OE_PORT"
