@@ -1,4 +1,4 @@
-# odoo-clouder-install
+# odoo_clouder_install
 Automated install scripts for Odoo + Clouder. 
 This scripts just needs to be preconfigured before being launched, no interaction needed. 
 
