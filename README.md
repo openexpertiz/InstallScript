@@ -1,8 +1,8 @@
-# odoo_clouder_install
+# odoo-clouder-install
 Automated install scripts for Odoo + Clouder. 
 This scripts just needs to be preconfigured before being launched, no interaction needed. 
 
-The script is based on the install script from André Schenkels (https://github.com/aschenkels-ictstudio/openerp-install-scripts) and having some additions from the one of Yenthe (https://github.com/Yenthe666/InstallScript) and Gustavo Valverde (https://github.com/gustavovalverde/odoo-install-scripts). 
+The script is based on the install scripts from André Schenkels (https://github.com/aschenkels-ictstudio/openerp-install-scripts), Yenthe (https://github.com/Yenthe666/InstallScript), Gustavo Valverde (https://github.com/gustavovalverde/odoo-install-scripts) with some additions from Nils Hamerlinck (http://nils.hamerlinck.fr/blog/2015/04/09/install-odoo-vps-ubuntu/)
 
 It also follows the approach recommended in Odoo's documentation (https://www.odoo.com/documentation/9.0/setup/install.html) using pip instead of apt-get for python dependencies
 
@@ -17,7 +17,7 @@ It also follows the approach recommended in Odoo's documentation (https://www.od
 2.  **THIS IS IMPORTANT!** Modify this variables, otherwise you might get hacked too easily
   ```bash
     OE_USER="odoo"
-    OE_SUPERADMIN="admin-oe2017"
+    OE_SUPERADMIN="admin-OE2017"
   ```
 
 3.  Modify this variables based on your needs
