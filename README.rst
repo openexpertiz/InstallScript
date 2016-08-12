@@ -32,33 +32,32 @@ Installation procedure
 ======================
 1.  Download the script
 
-`wget https://raw.githubusercontent.com/openexpertiz/InstallScript/master/odoo_clouder_install.sh`
+``wget https://raw.githubusercontent.com/openexpertiz/InstallScript/master/odoo_clouder_install.sh``
 
 2.  **THIS IS IMPORTANT!** Modify this variables, otherwise you might get hacked too easily
 
 ``OE_USER="odoo"``
-
 ``OE_SUPERADMIN="admin-OE2017"``
 
 3.  Modify this variables based on your needs
 
- INSTALL_CLOUDER="True"
+``INSTALL_CLOUDER="True"``
  
- INSTALL_WKHTMLTOPDF="True"
+``INSTALL_WKHTMLTOPDF="True"``
  
- HAVE_PROXY="False"
+``HAVE_PROXY="False"``
  
- OE_PORT="8069"
+``OE_PORT="8069"``
  
- OE_VERSION="8.0"
+``OE_VERSION="8.0"``
  
- IS_ENTERPRISE="False"
+``IS_ENTERPRISE="False"``
 
 4.  Make the script executable
- chmod +x odoo_clouder_install.sh
+``chmod +x odoo_clouder_install.sh``
 
 5. Execute the script:
- . odoo_clouder_install.sh
+``. odoo_clouder_install.sh``
 
 .. _Odoo: https://www.odoo.com/
 .. _Clouder: https://goclouder.net/
