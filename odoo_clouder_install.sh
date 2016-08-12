@@ -97,17 +97,17 @@ echo -e "\n---- Install python packages ----"
 sudo apt-get install python-dateutil python-feedparser python-ldap python-libxslt1 python-lxml python-mako python-openid python-psycopg2 python-pybabel python-pychart python-pydot python-pyparsing python-reportlab python-simplejson python-tz python-vatnumber python-vobject python-werkzeug python-xlwt python-yaml python-docutils python-psutil python-mock python-unittest2 python-jinja2 python-pypdf python-decorator python-requests python-passlib python-geoip python-unicodecsv python-serial python-pillow -y
 
 echo -e "\n---- Install additional python dependencies ----"
-sudo pip install gdata psycogreen
+sudo pip install --upgrade gdata psycogreen
 # This is for compatibility with Ubuntu 16.04. Will work on 14.04
-sudo -H pip install suds
+sudo -H pip install --upgrade suds
 
 echo -e "\n---- Install Odoo python dependencies in requirements.txt ----"
-sudo pip install -r $OE_HOME_EXT/requirements.txt
+sudo pip install -r --upgrade $OE_HOME_EXT/requirements.txt
 
 echo -e "\n--- Install other required packages"
-sudo apt-get install node-clean-css -y
-sudo apt-get install node-less -y
-sudo apt-get install python-gevent -y
+sudo apt-get install --upgrade node-clean-css -y
+sudo apt-get install --upgrade node-less -y
+sudo apt-get install --upgrade python-gevent -y
 
 echo "************************************"
 echo "*                                  *"
@@ -115,8 +115,8 @@ echo "*         Clouder Libraries        *"
 echo "*                                  *"
 echo "************************************"
 echo -e "\n---- Install required libraries for Clouder ----"
-sudo pip install simplejson lxml pytz psycopg2 werkzeug pyyaml mako platypus unittest2 reportlab decorator pillow requests 
-sudo pip install jinja2 pyPdf passlib psutil
+sudo pip install --upgrade simplejson lxml pytz psycopg2 werkzeug pyyaml mako platypus unittest2 reportlab decorator pillow requests 
+sudo pip install --upgrade jinja2 pyPdf passlib psutil
 sudo apt-get install python-dateutil python-pychart python-decorator python-docutils python-passlib python-openid python-babel
 
 echo -e "\n---- Install and Upgrade paramiko and erppeek ----"
