@@ -30,16 +30,17 @@ It also follows the approach recommended in Odoo's documentation (https://www.od
 
 Installation procedure
 ======================
-1.  Download the script
+1.  Download the script:
 
 ``wget https://raw.githubusercontent.com/openexpertiz/InstallScript/master/odoo_clouder_install.sh``
 
-2.  **THIS IS IMPORTANT!** Modify this variables, otherwise you might get hacked too easily
+2.  **THIS IS IMPORTANT!** Modify this variables, otherwise you might get hacked too easily:
 
 ``OE_USER="odoo"``
+
 ``OE_SUPERADMIN="admin-OE2017"``
 
-3.  Modify this variables based on your needs
+3.  Modify this variables based on your needs:
 
 ``INSTALL_CLOUDER="True"``
  
@@ -53,10 +54,12 @@ Installation procedure
  
 ``IS_ENTERPRISE="False"``
 
-4.  Make the script executable
+4.  Make the script executable:
+
 ``chmod +x odoo_clouder_install.sh``
 
 5. Execute the script:
+
 ``. odoo_clouder_install.sh``
 
 .. _Odoo: https://www.odoo.com/
