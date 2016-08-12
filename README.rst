@@ -12,16 +12,12 @@ Odoo - From ERP to CRM, eCommerce to CMS
 
 `Odoo`_ is an all-in-one business management suite of mobile-friendly web apps that integrates everything you need to grow your business: CRM, website content management, project management, human resources, accounting, invoicing and more. Odoo apps integrate seamlessly to provide a full-featured open source ERP, but can also be used stand-alone.
 
-This appliance includes: 
-
+odoo_clouder_install
+====================
+Automated install scripts for Odoo + Clouder:
 - Odoo v8/v9 installed from upstream GIT source (`GitHub/Odoo`_)
 - Clouder v8.1 installed from upstream GIT source (`GitHub/Clouder`_)
 - Includes all base modules from base install of Odoo and Clouder
-
-odoo_clouder_install
-====================
-
-Automated install scripts for Odoo + Clouder. 
 /!\\ BETA version, do NOT use in production! 
 
 This scripts just needs to be preconfigured before being launched, no interaction needed. 
@@ -30,40 +26,32 @@ The script is based on the install scripts from André Schenkels (https://github
 
 It also follows the approach recommended in Odoo's documentation (https://www.odoo.com/documentation/9.0/setup/install.html) using pip instead of apt-get for python dependencies
 
-! It's recommended to install this script with **elevated privileges**, so there's no need to use **sudo** to execute this procedure.
+!! It's recommended to install this script with **elevated privileges**, so there's no need to use **sudo** to execute this procedure.
 
 Installation procedure
 ======================
 1.  Download the script
-  ``bash
+  ```bash
   wget https://raw.githubusercontent.com/openexpertiz/InstallScript/master/odoo_clouder_install.sh
-  ``
+  ```
 
 2.  **THIS IS IMPORTANT!** Modify this variables, otherwise you might get hacked too easily
-  ``bash
-    OE_USER="odoo"
-    OE_SUPERADMIN="admin-OE2017"
-  ``
+  OE_USER="odoo"
+  OE_SUPERADMIN="admin-OE2017"
 
 3.  Modify this variables based on your needs
-  ``bash
-    INSTALL_CLOUDER="True"
-    INSTALL_WKHTMLTOPDF="True"
-    HAVE_PROXY="False" 
-    OE_PORT="8069"
-    OE_VERSION="8.0"
-    IS_ENTERPRISE="False"
-``
+  INSTALL_CLOUDER="True"
+  INSTALL_WKHTMLTOPDF="True"
+  HAVE_PROXY="False" 
+  OE_PORT="8069"
+  OE_VERSION="8.0"
+  IS_ENTERPRISE="False"
 
 4.  Make the script executable
-  ``bash
   chmod +x odoo_clouder_install.sh
-  ``
 
 5. Execute the script:
-  ``bash
   . odoo_clouder_install.sh
-  ``
 
 .. _Odoo: https://www.odoo.com/
 .. _Clouder: https://goclouder.net/
