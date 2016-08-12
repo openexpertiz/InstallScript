@@ -81,22 +81,28 @@ sudo su - postgres -c "createuser -s $OE_USER" 2> /dev/null || true
 #--------------------------------------------------
 # Install Dependencies
 #--------------------------------------------------
-echo -e "\n---- Install tool packages ----"
-sudo apt-get install wget git python-pip gdebi-core supervisor -y
-	
-echo -e "\n---- Install and Upgrade pip ----"
+echo -e "\n---- Install dependencies for Odoo install and management ----"
+sudo apt-get -y install wget curl git python-pip gdebi-core unzip supervisor
+sudo apt-get -y install build-essential libldap2-dev libsasl2-dev libxml2-dev libxslt-dev libevent-dev libjpeg-dev libjpeg8-dev libtiff5-dev
+
+echo -e "\n---- Install build dependencies for Python 2.7.9 ----"
+sudo apt-get -y install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev zlib1g-dev
+sudo ln -s /lib/x86_64-linux-gnu/libz.so.1 /lib/libz.so
+
+echo -e "\n---- Install and Upgrade pip and virtualenv ----"
 sudo pip install --upgrade pip
+sudo pip install --upgrade virtualenv
 
 echo -e "\n---- Install python packages ----"
 sudo apt-get install python-dateutil python-feedparser python-ldap python-libxslt1 python-lxml python-mako python-openid python-psycopg2 python-pybabel python-pychart python-pydot python-pyparsing python-reportlab python-simplejson python-tz python-vatnumber python-vobject python-werkzeug python-xlwt python-yaml python-docutils python-psutil python-mock python-unittest2 python-jinja2 python-pypdf python-decorator python-requests python-passlib python-geoip python-unicodecsv python-serial python-pillow -y
-
-echo -e "\n---- Install Odoo python dependencies in requirements.txt ----"
-sudo pip install -r $OE_HOME_EXT/requirements.txt
 
 echo -e "\n---- Install additional python dependencies ----"
 sudo pip install gdata psycogreen
 # This is for compatibility with Ubuntu 16.04. Will work on 14.04
 sudo -H pip install suds
+
+echo -e "\n---- Install Odoo python dependencies in requirements.txt ----"
+sudo pip install -r $OE_HOME_EXT/requirements.txt
 
 echo -e "\n--- Install other required packages"
 sudo apt-get install node-clean-css -y
@@ -176,6 +182,8 @@ echo -e "\n---- Create community module directory ----"
 sudo su $OE_USER -c "mkdir $OE_HOME/odoo-addons-{available,enabled}"
 cd $OE_HOME/odoo-addons-available
 sudo su $OE_USER -c "git clone --depth 1 --branch 8.0 --single-branch https://github.com/OCA/server-tools.git"
+
+echo -e "\n---- Create connector module directory ----"
 sudo su $OE_USER -c "git clone --depth 1 --branch 8.0 --single-branch https://github.com/OCA/connector.git"
 
 echo -e "\n---- Create nicolas-petit/web_create/clouder directory ----"
@@ -194,6 +202,7 @@ echo -e "\n---- Link the enabled addons among the available module directory ---
 cd $OE_HOME/odoo-addons-enabled
 sudo su $OE_USER -c "ln -s ../odoo-addons-available/server-tools/disable_openerp_online/"
 sudo su $OE_USER -c "ln -s ../odoo-addons-available/server-tools/cron_run_manually/"
+sudo su $OE_USER -c "ln -s ../odoo-addons-available/connector/connect* ."
 ## If we want to use nicolas-petit/web_create/clouder version, then uncomment it:
 sudo su $OE_USER -c "ln -s ../odoo-addons-available/nicolas-petit/web_create/clouder/cloud* ."
 ## Else if we want to use clouder-community/8.1/clouder version, then uncomment it:
