@@ -12,8 +12,9 @@ Odoo - From ERP to CRM, eCommerce to CMS
 
 `Odoo`_ is an all-in-one business management suite of mobile-friendly web apps that integrates everything you need to grow your business: CRM, website content management, project management, human resources, accounting, invoicing and more. Odoo apps integrate seamlessly to provide a full-featured open source ERP, but can also be used stand-alone.
 
-odoo_clouder_install
-====================
+odoo_clouder_install.sh
+-----------------------
+
 Automated install scripts for Odoo + Clouder:
 - Odoo v8/v9 installed from upstream GIT source (`GitHub/Odoo`_)
 - Clouder v8.1 installed from upstream GIT source (`GitHub/Clouder`_)
@@ -29,18 +30,19 @@ It also follows the approach recommended in Odoo's documentation (https://www.od
  It's recommended to install this script with **elevated privileges**, so there's no need to use **sudo** to execute this procedure.
 
 Installation procedure
-======================
-1.  Download the script:
+----------------------
+
+1.  Download the script
 
 ``wget https://raw.githubusercontent.com/openexpertiz/InstallScript/master/odoo_clouder_install.sh``
 
-2.  **This is important!** Modify this variables, otherwise you might get hacked too easily:
+2.  **This is important!** Modify this variables, otherwise you might get hacked too easily
 
 ``OE_USER="odoo"``
 
 ``OE_SUPERADMIN="admin-OE2017"``
 
-3.  Modify this variables based on your needs:
+3.  Modify this variables based on your needs
 
 ``INSTALL_CLOUDER="True"``
  
@@ -54,11 +56,11 @@ Installation procedure
  
 ``IS_ENTERPRISE="False"``
 
-4.  Make the script executable:
+4.  Make the script executable
 
 ``chmod +x odoo_clouder_install.sh``
 
-5. Execute the script:
+5. Execute the script
 
 ``. odoo_clouder_install.sh``
 
