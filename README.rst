@@ -62,7 +62,7 @@ Installation procedure
 
 5. Execute the script
 
-``. odoo_clouder_install.sh``
+``./odoo_clouder_install.sh``
 
 .. _Odoo: https://www.odoo.com/
 .. _Clouder: https://goclouder.net/
