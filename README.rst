@@ -34,7 +34,7 @@ Installation procedure
 
 ``wget https://raw.githubusercontent.com/openexpertiz/InstallScript/master/odoo_clouder_install.sh``
 
-2.  **THIS IS IMPORTANT!** Modify this variables, otherwise you might get hacked too easily:
+2.  **This is important!** Modify this variables, otherwise you might get hacked too easily:
 
 ``OE_USER="odoo"``
 
